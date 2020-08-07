@@ -1,3 +1,4 @@
+// This is made for me don't bitch
 package main
 
 import (
