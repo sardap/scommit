@@ -31,6 +31,7 @@ func main() {
 	}
 
 	allCorrect := true
+	var outMsg strings.Builder
 	for _, word := range spellchecker.Check(message) {
 		var txt aurora.Value
 		if word.Correct {
@@ -39,7 +40,7 @@ func main() {
 			txt = aurora.Red(word.Text)
 		}
 
-		fmt.Printf("%s ", txt)
+		fmt.Fprintf(&outMsg, "%s ", txt)
 
 		if !word.Correct {
 			allCorrect = false
@@ -47,6 +48,7 @@ func main() {
 	}
 
 	if !allCorrect {
+		fmt.Printf("Message: %s\n", outMsg.String())
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Printf("\nMade a mistake commit anyway? y\\n? ")
 		text, _ := reader.ReadString('\n')
