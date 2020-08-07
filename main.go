@@ -59,7 +59,6 @@ func main() {
 		}
 	}
 
-	// parmas := strings.Split(fmt.Sprintf("git commit -m \"%s\"", message), " ")
 	parmas := []string{"commit", "-m", message}
 	stdout, err := exec.Command("git", parmas...).Output()
 
